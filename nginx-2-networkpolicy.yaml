@@ -1,0 +1,18 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+metadata:
+  name: nginx-2-networkpolicy
+spec:
+  podSelector:
+    matchLabels:
+      app: nginx-2
+  policyTypes:
+  - Ingress
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              app: nginx-1 # allows calls from this pod
+    - ports:
+        - protocol: TCP
+          port: 8080

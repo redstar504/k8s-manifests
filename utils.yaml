@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: netutils-pod
+spec:
+  containers:
+    - name: netutils-container
+      image: arunvelsriram/utils
+      command:
+        - sleep
+        - "infinity"
+      imagePullPolicy: IfNotPresent
+  restartPolicy: Always

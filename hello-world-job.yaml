@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: hello-world-job
+spec:
+  backoffLimit: 3
+  activeDeadlineSeconds: 60
+  ttlSecondsAfterFinished: 10
+  template:
+    metadata:
+      name: hello-world-job
+    spec:
+      restartPolicy: OnFailure
+      containers:
+        - name: hello-world-container
+          image: busybox
+          command: ["/bin/sh", "-c"]
+          args: ["echo 'Hello World'; sleep 3"]

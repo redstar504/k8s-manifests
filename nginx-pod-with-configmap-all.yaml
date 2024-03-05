@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-with-configmap-all
+spec:
+  containers:
+    - name: nginx-container-with-configmap-all
+      image: nginx:latest
+      envFrom:
+        - configMapRef:
+            name: my-fourth-configmap

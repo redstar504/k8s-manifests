@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod-with-readiness-http
+spec:
+  containers:
+    - name: nginx-container-with-readiness-http
+      image: nginx
+      readinessProbe:
+        initialDelaySeconds: 5
+        periodSeconds: 5
+        httpGet:
+          port: 80
+          path: /ready
