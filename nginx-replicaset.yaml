@@ -1,12 +1,13 @@
-apiVersion: v1
-kind: ReplicationController
+apiVersion: apps/v1
+kind: ReplicaSet
 metadata:
-  name: nginx-replicationcontroller-example
+  name: nginx-replicaset-example
 spec:
-  replicas: 6
+  replicas: 3
   selector:
-    app: nginx
-    environment: test
+    matchLabels:
+      app: nginx
+      environment: test
   template:
     metadata:
       labels:
@@ -15,6 +16,6 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: nginx:latest
+          image: nginx:1.17
           ports:
             - containerPort: 80
